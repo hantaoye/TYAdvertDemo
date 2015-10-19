@@ -131,7 +131,9 @@
     
     _pageControl.numberOfPages = images.count;
     _pageControl.currentPage = 0;
-//    [self _setupFrame];
+    
+    //当URL是通过网络加载的时候，这个地方调用顺序慢于layoutSubviews，需要再次进行布局
+    [self _setupFrame];
     
     if (images.count < 2) {
         return;
